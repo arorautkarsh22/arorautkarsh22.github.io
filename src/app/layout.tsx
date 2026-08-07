@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Utkarsh Arora — AI/ML Engineer & Full Stack Developer",
+  title: "Utkarsh Arora - Portfolio",
   description:
     "Portfolio of Utkarsh Arora — B.Tech AI/ML student specializing in machine learning, deep learning, and full-stack development. Experienced in TensorFlow, React, and building intelligent systems.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "Portfolio",
   ],
   openGraph: {
-    title: "Utkarsh Arora — AI/ML Engineer & Full Stack Developer",
+    title: "Utkarsh Arora - Portfolio",
     description:
       "Portfolio of Utkarsh Arora — building intelligent systems with AI/ML and modern web technologies.",
     type: "website",
