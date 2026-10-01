@@ -6,6 +6,17 @@ import { Modal } from '@/components/ui/Modal';
 
 const experiences = [
   {
+    role: 'Freelance Full-Stack Developer',
+    company: 'SGEREAL',
+    link: 'http://sgereal.com',
+    period: 'September 2026',
+    points: [
+      'Designed and deployed an end-to-end web platform delivering a smooth user experience, featuring a dynamic admin panel, JWT authentication, integrated email automation for client leads, and a custom text editor for blog management.',
+      'Developed with a mobile-first approach using React, Node.js, Express.js, and MySQL to ensure optimal performance across all devices.',
+    ],
+    tech: ['React', 'Node.js', 'Express.js', 'MySQL', 'JWT'],
+  },
+  {
     role: 'Intern',
     company: 'Power Grid Corporation of India Limited',
     period: 'June 2026 – July 2026',
@@ -51,7 +62,14 @@ function ExperienceCard({ exp, idx, isLast }: { exp: any; idx: number; isLast: b
           <h3 className="text-lg font-semibold text-[#c9d1d9]">{exp.role}</h3>
           <div className="flex items-center gap-2 text-[#8b949e] text-sm mt-1">
             <Briefcase size={14} />
-            <span>{exp.company}</span>
+            {exp.link ? (
+              <a href={exp.link} target="_blank" rel="noopener noreferrer" className="hover:text-[#58a6ff] transition-colors flex items-center gap-1">
+                {exp.company}
+                <ExternalLink size={12} className="ml-0.5" />
+              </a>
+            ) : (
+              <span>{exp.company}</span>
+            )}
           </div>
         </div>
         <span className="text-xs font-mono text-[#8b949e] bg-[#21262d] px-3 py-1 rounded-full whitespace-nowrap">

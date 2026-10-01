@@ -1,19 +1,61 @@
 'use client';
 import { TextScramble } from '@/components/motion-primitives/text-scramble';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronDown, Mail, Phone, FileText } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 import { TextLoop } from '@/components/motion-primitives/text-loop';
-
+import ShapeGrid from '@/components/ui/ShapeGrid';
 export default function Hero() {
   const [trigger, setTrigger] = useState(true);
+  const [scrollY, setScrollY] = useState(0);
+  const [docHeight, setDocHeight] = useState(1000);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    const handleResize = () => setDocHeight(document.documentElement.scrollHeight);
+    
+    handleResize(); // Initialize on mount
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const blurValue = scrollY / 100;
+  const opacityValue = Math.max(1 - (scrollY / docHeight) * 1.3, 0.15);
 
   return (
-    <section
-      id="hero"
-      className="min-h-[100svh] flex flex-col items-center justify-center relative px-6 py-20 pb-32"
-    >
+    <>
+      <div 
+        className="fixed inset-0 z-[-1] pointer-events-none transition-[filter,opacity] duration-75"
+        style={{
+          filter: `blur(${blurValue}px)`,
+          opacity: opacityValue
+        }}
+      >
+        <div className="absolute inset-0 pointer-events-auto">
+          <ShapeGrid 
+            speed={0.1} 
+            squareSize={60}
+            direction="diagonal" 
+            borderColor="rgba(255,255,255,0.05)"
+            hoverFillColor="rgba(255,255,255,0.1)"
+            shape="triangle" 
+            hoverTrailAmount={0} 
+          />
+        </div>
+        {/* Gradient masks for smooth transition */}
+        <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#0d1117] via-transparent to-transparent"></div>
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_20%,#0d1117_120%)]"></div>
+      </div>
+
+      <section
+        id="hero"
+        className="min-h-[100svh] flex flex-col items-center justify-center relative px-6 py-20 pb-32 overflow-hidden"
+      >
       <div className="text-center z-10 max-w-4xl w-full flex flex-col items-center mt-8">
         {/* Name */}
         <div className="mb-4">
@@ -138,5 +180,6 @@ export default function Hero() {
         <ChevronDown size={16} />
       </div>
     </section>
+    </>
   );
 }

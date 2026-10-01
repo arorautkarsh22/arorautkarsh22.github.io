@@ -137,7 +137,7 @@ export default function About() {
           <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#c9d1d9] leading-relaxed mb-4 max-w-3xl">
             Driven by a deep curiosity, I am always ready to <span className="text-white">learn and figure out</span> exactly how things tick.
           </p>
-          <p className="text-base text-[#8b949e] leading-relaxed max-w-2xl mb-12">
+          <p className="text-base text-[#8b949e] text-justify leading-relaxed max-w-2xl mb-12">
             I consider myself a <span className="text-white font-semibold">versatile technologist</span>—a <span className="text-white font-semibold">"Jack of all trades, Master of none, but oftentimes better than a master of one."</span> From complex AI architectures to front-end UI, I embrace this breadth of knowledge to connect the dots across domains. I approach engineering challenges with persistence, enjoying the process of breaking down roadblocks until an elegant solution is found. I also have a natural appreciation for <span className="text-white font-semibold">structure and symmetry</span>, which extends to crafting perfectly aligned interfaces.
           </p>
         </motion.div>
